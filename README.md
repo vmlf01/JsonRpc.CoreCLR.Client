@@ -26,7 +26,7 @@ You can also run the tests by doing:
 
 ```Shell
 # Run tests from repository root
-dnx -p tests/ test
+dnx -p tests/CoreCLR.JsonRpc.Client.Tests test
 ```
 
 ### Publish NuGet package to repository
