@@ -4,6 +4,7 @@ Simple JSON-RPC Client for CoreCLR 5.0.
 
 ### Installation
 
+*TODO*
 
 ### Build From Source
 
@@ -18,7 +19,7 @@ cd CoreCLR.JsonRpc.Client
 dnu restore
 
 # Build NuGet package
-dnu build
+dnu pack src/CoreCLR.JsonRpc.Client --out build
 ```
 
 You can also run the tests by doing:
@@ -28,5 +29,15 @@ You can also run the tests by doing:
 dnx -p tests/ test
 ```
 
+### Publish NuGet package to repository
+
+You will need nuget.exe on your path and set the NuGet API Key before you can push a package to the NuGet repository.
+
+```Shell
+nuget.exe setApiKey 76d7xxxx-xxxx-xxxx-xxxx-eabb8b0cxxxx
+nuget.exe push .\build\Debug\CoreCLR.JsonRpc.Client.0.0.1.nupkg
+```
+
 ### Samples
 
+*TODO*
