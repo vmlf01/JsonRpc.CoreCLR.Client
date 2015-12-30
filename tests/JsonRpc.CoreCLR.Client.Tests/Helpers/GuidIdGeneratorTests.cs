@@ -5,9 +5,9 @@ using System.Reflection;
 using System.Threading.Tasks;
 using Xunit;
 
-using CoreCLR.JsonRpc.Client.Helpers;
+using JsonRpc.CoreCLR.Client.Helpers;
 
-namespace CoreCLR.JsonRpc.Client.Tests.Helpers
+namespace JsonRpc.CoreCLR.Client.Tests.Helpers
 {
   public class GuidIdGeneratorTests : IDisposable
   {

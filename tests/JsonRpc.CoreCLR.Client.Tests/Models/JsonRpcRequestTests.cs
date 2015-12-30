@@ -3,9 +3,9 @@ using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Xunit;
 
-using CoreCLR.JsonRpc.Client.Models;
+using JsonRpc.CoreCLR.Client.Models;
 
-namespace CoreCLR.JsonRpc.Client.Tests.Models
+namespace JsonRpc.CoreCLR.Client.Tests.Models
 {
   public class JsonRpcRequestTests : IDisposable
   {

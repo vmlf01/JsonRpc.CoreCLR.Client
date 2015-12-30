@@ -1,7 +1,7 @@
 using System.Threading.Tasks;
-using CoreCLR.JsonRpc.Client.Models;
+using JsonRpc.CoreCLR.Client.Models;
 
-namespace CoreCLR.JsonRpc.Client.Interfaces
+namespace JsonRpc.CoreCLR.Client.Interfaces
 {
     public interface IJsonRpcClient
     {

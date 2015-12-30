@@ -1,8 +1,8 @@
 using System;
 using System.Threading.Tasks;
-using CoreCLR.JsonRpc.Client.Interfaces;
+using JsonRpc.CoreCLR.Client.Interfaces;
 
-namespace CoreCLR.JsonRpc.Client.Helpers
+namespace JsonRpc.CoreCLR.Client.Helpers
 {
     public class GuidIdGenerator : IIdGenerator
     {

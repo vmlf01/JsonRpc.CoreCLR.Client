@@ -1,4 +1,4 @@
-# CoreCLR.JsonRpc.Client
+# JsonRpc.CoreCLR.Client
 
 Simple JSON-RPC Client for CoreCLR 5.0.
 
@@ -12,21 +12,21 @@ To build the library from source, please do:
 
 ```Shells
 # Clone repository
-git clone https://github.com/vmlf01/CoreCLR.JsonRpc.Client.git
-cd CoreCLR.JsonRpc.Client
+git clone https://github.com/vmlf01/JsonRpc.CoreCLR.Client.git
+cd JsonRpc.CoreCLR.Client
 
 # Restore NuGet packages
 dnu restore
 
 # Build NuGet package
-dnu pack src/CoreCLR.JsonRpc.Client --out build
+dnu pack src/JsonRpc.CoreCLR.Client --out build
 ```
 
 You can also run the tests by doing:
 
 ```Shell
 # Run tests from repository root
-dnx -p tests/CoreCLR.JsonRpc.Client.Tests test
+dnx -p tests/JsonRpc.CoreCLR.Client.Tests test
 ```
 
 ### Publish NuGet package to repository
@@ -35,7 +35,7 @@ You will need nuget.exe on your path and set the NuGet API Key before you can pu
 
 ```Shell
 nuget.exe setApiKey 76d7xxxx-xxxx-xxxx-xxxx-eabb8b0cxxxx
-nuget.exe push .\build\Debug\CoreCLR.JsonRpc.Client.0.0.1.nupkg
+nuget.exe push .\build\Debug\JsonRpc.CoreCLR.Client.0.0.1.nupkg
 ```
 
 ### Samples

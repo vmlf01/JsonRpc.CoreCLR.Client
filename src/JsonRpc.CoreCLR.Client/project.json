@@ -1,0 +1,36 @@
+{
+  "version": "0.0.1-*",
+  "description": "Simple JSON-RPC Client for DNX CoreCLR 5.0",
+  "authors": [
+    "vmlf01",
+    "trafaelsilva"
+  ],
+  "tags": [
+    "coreclr",
+    "json-rpc",
+    "dnx"
+  ],
+  "projectUrl": "https://github.com/vmlf01/JsonRpc.CoreCLR.Client",
+  "licenseUrl": "https://github.com/vmlf01/JsonRpc.CoreCLR.Client/blob/master/LICENSE",
+  "dependencies": {
+    "Newtonsoft.Json": "8.0.1"
+  },
+  "commands": {},
+  "frameworks": {
+    "dnxcore50": {
+      "dependencies": {
+        "System.Runtime": "4.0.21-beta-23516",
+        "System.IO": "4.0.11-beta-23516",
+        "System.Net.Requests": "4.0.11-beta-23516",
+        "System.Threading.Tasks": "4.0.11-beta-23516"          
+      }
+    },
+    "dnx451": {
+      "dependencies": {}
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vmlf01/JsonRpc.CoreCLR.Client"
+  }
+}

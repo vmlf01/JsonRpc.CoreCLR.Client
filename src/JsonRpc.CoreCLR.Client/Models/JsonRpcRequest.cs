@@ -1,6 +1,6 @@
 using Newtonsoft.Json;
 
-namespace CoreCLR.JsonRpc.Client.Models
+namespace JsonRpc.CoreCLR.Client.Models
 {
     [JsonObject(MemberSerialization.OptIn)]
     public class JsonRpcRequest

@@ -3,11 +3,11 @@ using System.IO;
 using System.Net;
 using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
-using CoreCLR.JsonRpc.Client.Interfaces;
-using CoreCLR.JsonRpc.Client.Models;
-using CoreCLR.JsonRpc.Client.Helpers;
+using JsonRpc.CoreCLR.Client.Interfaces;
+using JsonRpc.CoreCLR.Client.Models;
+using JsonRpc.CoreCLR.Client.Helpers;
 
-namespace CoreCLR.JsonRpc.Client
+namespace JsonRpc.CoreCLR.Client
 {
     public class JsonRpcWebClient : IJsonRpcClient
     {
@@ -119,15 +119,7 @@ namespace CoreCLR.JsonRpc.Client
             var jsonResponse = Newtonsoft.Json.JsonConvert.DeserializeObject<JsonRpcResponse<T>>(rpcStringResponse);
             if (jsonResponse == null)
             {
-                //if (!string.IsNullOrEmpty(rpcStringResponse))
-                //{
-                //    JObject jo = Newtonsoft.Json.JsonConvert.DeserializeObject(rpcStringResponse) as JObject;
-                //    throw new Exception(jo["Error"].ToString());
-                //}
-                //else
-                //{
-                    throw new Exception("Empty response");
-                //}
+                throw new InvalidOperationException("Invalid response");
             }
             
             return Task.FromResult(jsonResponse);

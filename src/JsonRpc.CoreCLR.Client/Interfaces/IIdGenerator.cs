@@ -1,6 +1,6 @@
 using System.Threading.Tasks;
 
-namespace CoreCLR.JsonRpc.Client.Interfaces
+namespace JsonRpc.CoreCLR.Client.Interfaces
 {
     public interface IIdGenerator
     {
