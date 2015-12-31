@@ -18,6 +18,9 @@ namespace HelloGuruJsonRpcSample
             Uri rpcEndpoint = new Uri("http://gurujsonrpc.appspot.com/guru");
             JsonRpcWebClient rpc = new JsonRpcWebClient(rpcEndpoint);
 
+            // you can use Json.Net JValue if the service returns a value or
+            // JObject if it returns an object or you can provide your own
+            // custom class type to be used when deserializing the rpc result
             var response = await rpc.InvokeAsync<JValue>("guru.test", new string[]
             {
                 "World"

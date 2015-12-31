@@ -2,6 +2,8 @@
 
 Simple JSON-RPC Client for CoreCLR 5.0.
 
+With bits and pieces from [JSON-RPC.NET](https://github.com/Astn/JSON-RPC.NET)
+
 ### Installation
 
 Just use ```dnu``` in your project folder to pull the package from NuGet:
