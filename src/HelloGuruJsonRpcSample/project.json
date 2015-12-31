@@ -13,15 +13,17 @@
   "projectUrl": "https://github.com/vmlf01/JsonRpc.CoreCLR.Client",
   "licenseUrl": "https://github.com/vmlf01/JsonRpc.CoreCLR.Client/blob/master/LICENSE",
   "dependencies": {
-    "Newtonsoft.Json": "8.0.1"
+    "Newtonsoft.Json": "8.0.1",
+    "JsonRpc.CoreCLR.Client": "",
+    "System.Console": "4.0.0-beta-23516"
   },
-  "commands": {},
+  "commands": {
+    "start": "HelloGuruJsonRpcSample"
+  },
   "frameworks": {
     "dnxcore50": {
       "dependencies": {
         "System.Runtime": "4.0.21-beta-23516",
-        "System.IO": "4.0.11-beta-23516",
-        "System.Net.Requests": "4.0.11-beta-23516",
         "System.Threading.Tasks": "4.0.11-beta-23516"
       }
     },
