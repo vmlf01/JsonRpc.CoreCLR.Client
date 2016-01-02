@@ -7,6 +7,9 @@ namespace JsonRpc.CoreCLR.Client.Models
     {
         public bool IsNotification { get; set; }
 
+        [JsonProperty(PropertyName = "jsonrpc")]
+        public string JsonRpc { get { return "2.0"; } }
+
         [JsonProperty("method")]
         public string Method { get; set; }
 
