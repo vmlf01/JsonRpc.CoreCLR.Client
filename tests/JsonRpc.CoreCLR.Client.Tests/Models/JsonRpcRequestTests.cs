@@ -25,7 +25,7 @@ namespace JsonRpc.CoreCLR.Client.Tests.Models
     {
         var json = Newtonsoft.Json.JsonConvert.SerializeObject(jsonRequest);
 
-        Assert.Equal("{\"method\":\"rpcMethod\",\"params\":{\"param1\":\"value1\"},\"id\":123}", json);
+        Assert.Equal("{\"jsonrpc\":\"2.0\",\"method\":\"rpcMethod\",\"params\":{\"param1\":\"value1\"},\"id\":123}", json);
     }
 
     public void Dispose()
