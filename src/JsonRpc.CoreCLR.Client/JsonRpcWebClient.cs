@@ -2,7 +2,6 @@ using System;
 using System.IO;
 using System.Net;
 using System.Threading.Tasks;
-using Newtonsoft.Json.Linq;
 using JsonRpc.CoreCLR.Client.Interfaces;
 using JsonRpc.CoreCLR.Client.Models;
 using JsonRpc.CoreCLR.Client.Helpers;
@@ -14,13 +13,13 @@ namespace JsonRpc.CoreCLR.Client
         public Uri ServiceEndpoint { get; private set; }
         private IIdGenerator IdGenerator { get; set; }
         private IWebRequestPreProcessor RequestPreProcessor { get; set; }
-        
-        public JsonRpcWebClient(Uri serviceEndpoint) 
+
+        public JsonRpcWebClient(Uri serviceEndpoint)
             : this(serviceEndpoint, null, new GuidIdGenerator())
         {
         }
-        
-        public JsonRpcWebClient(Uri serviceEndpoint, IWebRequestPreProcessor requestPreProcessor) 
+
+        public JsonRpcWebClient(Uri serviceEndpoint, IWebRequestPreProcessor requestPreProcessor)
             : this(serviceEndpoint, requestPreProcessor, new GuidIdGenerator())
         {
         }
@@ -32,12 +31,12 @@ namespace JsonRpc.CoreCLR.Client
             this.IdGenerator = idGenerator;
         }
 
-        public async Task<JsonRpcResponse<T>> InvokeAsync<T>(string method, object arg)
+        public async Task<JsonRpcResponse<T>> InvokeAsync<T>(string method, object args)
         {
             var req = new JsonRpcRequest()
             {
                 Method = method,
-                Params = arg
+                Params = args
             };
             return await InvokeAsync<T>(req);
         }
@@ -57,39 +56,46 @@ namespace JsonRpc.CoreCLR.Client
             await GenerateRequestId(jsonRpc);
 
             WebRequest req = await CreateWebRequest(jsonRpc);
-            
-            await SendWebRequest(req, jsonRpc);
 
-            var stringResponse = await GetResponseString(req);
+            await PreProcessRequest(req, jsonRpc);
 
-            var jsonResponse = await DeserializeResponse<T>(stringResponse);
+            using (var res = await SendWebRequest(req, jsonRpc))
+            {
+                var stringResponse = await GetResponseString(res);
 
-            return jsonResponse;
+                var jsonResponse = await DeserializeResponse<T>(stringResponse);
+
+                return jsonResponse;
+            }
         }
-        
-        private async Task GenerateRequestId(JsonRpcRequest jsonRpc) 
+
+        private async Task GenerateRequestId(JsonRpcRequest jsonRpc)
         {
             if (!jsonRpc.IsNotification && jsonRpc.Id == null)
             {
                 jsonRpc.Id = await IdGenerator.GenerateId();
             }
         }
-        
-        private async Task<WebRequest> CreateWebRequest(JsonRpcRequest jsonRpc)
+
+        private Task<WebRequest> CreateWebRequest(JsonRpcRequest jsonRpc)
         {
             WebRequest req = HttpWebRequest.Create(ServiceEndpoint);
             req.Method = "POST";
             req.ContentType = "application/json-rpc";
+            return Task.FromResult(req);
+        }
 
+        private async Task<WebRequest> PreProcessRequest(WebRequest req, JsonRpcRequest jsonRpc)
+        {
             if (this.RequestPreProcessor != null)
             {
                 await this.RequestPreProcessor.PreProcessRequest(req, jsonRpc);
             }
-            
+
             return req;
         }
-        
-        private async Task SendWebRequest(WebRequest req, JsonRpcRequest jsonRpc)
+
+        private async Task<WebResponse> SendWebRequest(WebRequest req, JsonRpcRequest jsonRpc)
         {
             var json = Newtonsoft.Json.JsonConvert.SerializeObject(jsonRpc);
 
@@ -100,20 +106,21 @@ namespace JsonRpc.CoreCLR.Client
                     await stream.WriteAsync(json);
                 }
             }
+
+            return await req.GetResponseAsync();
         }
-        
-        private async Task<string> GetResponseString(WebRequest req)
+
+        private async Task<string> GetResponseString(WebResponse res)
         {
-            var res = await req.GetResponseAsync();
             var stringResponse = "";
             using (var rstream = new StreamReader(res.GetResponseStream()))
             {
-                stringResponse = rstream.ReadToEnd();
+                stringResponse = await rstream.ReadToEndAsync();
             }
-            
+
             return stringResponse;
         }
-        
+
         private Task<JsonRpcResponse<T>> DeserializeResponse<T>(string rpcStringResponse)
         {
             var jsonResponse = Newtonsoft.Json.JsonConvert.DeserializeObject<JsonRpcResponse<T>>(rpcStringResponse);
@@ -121,9 +128,8 @@ namespace JsonRpc.CoreCLR.Client
             {
                 throw new InvalidOperationException("Invalid response");
             }
-            
+
             return Task.FromResult(jsonResponse);
         }
-
     }
 }

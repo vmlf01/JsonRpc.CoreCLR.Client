@@ -13,6 +13,10 @@ namespace JsonRpc.CoreCLR.Client.Models
         [JsonProperty("method")]
         public string Method { get; set; }
 
+        /// <summary>
+        /// Params can be an array of values for positional arguments,
+        /// or an object for named arguments
+        /// </summary>
         [JsonProperty("params")]
         public object Params { get; set; }
 
