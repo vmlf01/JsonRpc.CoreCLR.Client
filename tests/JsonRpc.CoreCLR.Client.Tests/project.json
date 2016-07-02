@@ -1,5 +1,5 @@
 {
-  "version": "0.0.1-*",
+  "version": "1.0.0-*",
   "description": "Simple JSON-RPC Client for .Net Core 1.0",
   "authors": [
     "vmlf01",
@@ -7,9 +7,9 @@
   ],
   "testRunner": "xunit",
   "dependencies": {
-    "xunit": "2.1.0",
-    "dotnet-test-xunit": "1.0.0-rc2-build10025",
-    "Newtonsoft.Json": "9.0.1-beta1",
+    "xunit": "2.2.0-*",
+    "dotnet-test-xunit": "2.2.0-*",
+    "Newtonsoft.Json": "9.0.1",
     "JsonRpc.CoreCLR.Client": "1.0.0-*"
   },
   "commands": {},
@@ -20,11 +20,7 @@
           "type": "platform",
           "version": "1.0.0"
         }
-      },
-      "imports": [
-          "dnxcore50",
-          "portable-net45+win8"
-      ]
+      }
     }
   },
   "packOptions": {

@@ -9,7 +9,7 @@
     "emitEntryPoint": true
   },
   "dependencies": {
-    "Newtonsoft.Json": "9.0.1-beta1",
+    "Newtonsoft.Json": "9.0.1",
     "JsonRpc.CoreCLR.Client": "1.0.0-*"
   },
   "commands": {},
@@ -18,13 +18,9 @@
       "dependencies": {
         "Microsoft.NETCore.App": {
           "type": "platform",
-          "version": "1.0.0-*"
+          "version": "1.0.0"
         }
-      },
-      "imports": [
-          "dnxcore50",
-          "portable-net45+win8"
-      ]
+      }
     }
   },
   "packOptions": {
