@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0-*",
+  "version": "1.0.1",
   "description": "Simple JSON-RPC Client for .Net Core 1.0",
   "authors": [
     "vmlf01",
@@ -10,7 +10,7 @@
     "xunit": "2.2.0-*",
     "dotnet-test-xunit": "2.2.0-*",
     "Newtonsoft.Json": "9.0.1",
-    "JsonRpc.CoreCLR.Client": "1.0.0-*"
+    "JsonRpc.CoreCLR.Client": "1.0.1"
   },
   "commands": {},
   "frameworks": {
