@@ -25,5 +25,13 @@ namespace JsonRpc.CoreCLR.Client.Interfaces
         /// <param name="jsonRpc">Definition of the remote method to invoke</param>
         /// </summary>
         Task<JsonRpcResponse<T>> InvokeAsync<T>(JsonRpcRequest jsonRpc);
+
+
+        /// <summary>
+        /// Invokes a remote method by notification. No reply is expected or handled
+        /// <param name="jsonRpc">Definition of the remote method to invoke</param>
+        /// </summary>
+        void NotifyAsync(JsonRpcRequest jsonRpc);
+
     }
 }
